@@ -1,6 +1,12 @@
+import { React } from 'react';
+
 function App() {
   return (
-    <h1>Meu app React</h1>
+    <form>
+      <input type="text" placeholder="Título"></input>
+      <textarea placeholder="Escreve sua nota..." />
+      <button>Criar Nota</button>
+    </form>
   );
 }
 
