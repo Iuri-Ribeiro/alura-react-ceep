@@ -3,7 +3,6 @@ import CardNota from '../CardNota';
 import './estilo.css';
 
 class ListaDeNotas extends Component {
-    state = {}
     render() {
         return (
             <ul className="lista-notas">
