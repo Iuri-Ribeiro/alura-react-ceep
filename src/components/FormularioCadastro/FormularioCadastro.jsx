@@ -4,7 +4,7 @@ import './estilo.css';
 class FormularioCadastro extends Component {
 
     constructor(props) {
-        super();
+        super(props);
         this.titulo = "";
         this.texto = "";
     }
