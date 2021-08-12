@@ -1,11 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './estilo.css';
 
 class ListaDeCategorias extends Component {
 
     _handleEventoInput(evento) {
-        if (evento.key == 'Enter') {
-
+        if (evento.key === 'Enter') {
+            const valorCategoria = evento.target.value;
+            this.props.adicionarCategoria(valorCategoria);
         }
     }
 
@@ -13,10 +14,9 @@ class ListaDeCategorias extends Component {
         return (
             <section className="lista-categorias">
                 <ul className="lista-categorias_lista">
-                    <li className="lista-categorias_item">Futebol</li>
-                    <li className="lista-categorias_item">Games</li>
-                    <li className="lista-categorias_item">Faculdade</li>
-                    <li className="lista-categorias_item">Trabalho</li>
+                    {this.props.categorias.map((categoria, index) => {
+                        return <li key={index} className="lista-categorias_item">{categoria}</li>
+                    })}
                 </ul>
                 <input
                     type="text"

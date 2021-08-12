@@ -30,12 +30,22 @@ class App extends Component {
         this.setState({ notas: arrayDeNotas });
     }
 
+    adicionarCategoria(valorCategoria) {
+        const novoArrayCategorias = [...this.state.categorias, valorCategoria];
+        const novoState = {
+            categorias: novoArrayCategorias
+        }
+        this.setState(novoState);
+    }
+
     render() {
         return (
             <section className="conteudo">
                 <FormularioCadastro criarNota={this.criarNota.bind(this)} />
                 <main className="conteudo-principal">
-                    <ListaDeCategorias />
+                    <ListaDeCategorias
+                        categorias={this.state.categorias}
+                        adicionarCategoria={this.adicionarCategoria.bind(this)} />
                     <ListaDeNotas
                         notas={this.state.notas}
                         deletarNota={this.deletarNota.bind(this)} />
