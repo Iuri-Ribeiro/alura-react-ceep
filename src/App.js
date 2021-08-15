@@ -4,53 +4,30 @@ import FormularioCadastro from './components/FormularioCadastro';
 import ListaDeCategorias from './components/ListaDeCategorias';
 import './assets/index.css';
 import './assets/App.css';
+import Categorias from './dados/categorias.js';
+import ArrayDeNotas from './dados/notas.js';
 
 class App extends Component {
 
     constructor() {
         super();
-        this.state = {
-            notas: [],
-            categorias: ["Trabalho", "Faculdade"]
-        };
-    }
-
-    criarNota(titulo, texto, categoria) {
-        const novaNota = { titulo, texto, categoria };
-        const novoArrayNotas = [...this.state.notas, novaNota]
-        const novoState = {
-            notas: novoArrayNotas
-        }
-        this.setState(novoState);
-    }
-
-    deletarNota(index) {
-        let arrayDeNotas = this.state.notas;
-        arrayDeNotas.splice(index, 1);
-        this.setState({ notas: arrayDeNotas });
-    }
-
-    adicionarCategoria(valorCategoria) {
-        const novoArrayCategorias = [...this.state.categorias, valorCategoria];
-        const novoState = {
-            categorias: novoArrayCategorias
-        }
-        this.setState(novoState);
+        this.categorias = new Categorias();
+        this.notas = new ArrayDeNotas();
     }
 
     render() {
         return (
             <section className="conteudo">
                 <FormularioCadastro
-                    categorias={this.state.categorias}
-                    criarNota={this.criarNota.bind(this)} />
+                    categorias={this.categorias.categorias}
+                    criarNota={this.notas.criarNota} />
                 <main className="conteudo-principal">
                     <ListaDeCategorias
-                        categorias={this.state.categorias}
-                        adicionarCategoria={this.adicionarCategoria.bind(this)} />
+                        categorias={this.categorias.categorias}
+                        adicionarCategoria={this.categorias.adicionarCategoria} />
                     <ListaDeNotas
-                        notas={this.state.notas}
-                        deletarNota={this.deletarNota.bind(this)} />
+                        notas={this.notas.notas}
+                        deletarNota={this.notas.deletarNota} />
                 </main>
             </section>
         );
